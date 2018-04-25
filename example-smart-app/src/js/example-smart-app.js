@@ -11,11 +11,10 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-        var obv = smart.api.fetchAll({
+        var obv = smart.patient.api.fetchAll({
                     type: 'Appointment',
                     query: {
                       date: '2017',
-                      patient: '4342012',
                     }
                   });
 
