@@ -11,17 +11,18 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-        console.log(pt);
         var obv = smart.patient.api.fetchAll({
                     type: 'Appointment',
-                    date: '2017',
+                    query: {
+                      date: '2017',
+                    }
                   });
 
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
           console.log('🐨', obv);
-          console.log('🐙')
+          console.log('🐙', patient);
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
